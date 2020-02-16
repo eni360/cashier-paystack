@@ -1,7 +1,15 @@
 {
-    "name": "webong/cashier-paystack",
+    "name": "dantosmak/cashier-paystack",
     "description": "A Laravel Cashier Wrapper that provides an expressive, fluent interface to Paystack's subscription invoicing services.",
-    "keywords": ["laravel", "php", "paystack", "cashier", "payment", "billing", "subscription"],
+    "keywords": [
+        "laravel",
+        "php",
+        "paystack",
+        "cashier",
+        "payment",
+        "billing",
+        "subscription"
+    ],
     "license": "MIT",
     "authors": [
         {
