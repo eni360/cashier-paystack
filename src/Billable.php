@@ -9,6 +9,8 @@ use Illuminate\Support\Collection;
 use Unicodeveloper\Paystack\Facades\Paystack;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+//https://medium.com/swlh/using-your-own-forks-with-composer-699358db05d9
+
 trait Billable
 {
     /**
@@ -27,12 +29,12 @@ trait Billable
         
         $options['email'] = $this->email;
         $options['amount'] = intval($amount);
-        if ( array_key_exists('authorization_code', $options) ) {
-            $response = PaystackService::chargeAuthorization($options);    
+        if (array_key_exists('authorization_code', $options)) {
+            $response = PaystackService::chargeAuthorization($options);
         } elseif (array_key_exists('card', $options) || array_key_exists('bank', $options)) {
-            $response = PaystackService::charge($options);   
+            $response = PaystackService::charge($options);
         } else {
-            $response = PaystackService::makePaymentRequest($options);	  
+            $response = PaystackService::makePaymentRequest($options);
         }
 
         if (! $response['status']) {
@@ -248,7 +250,7 @@ trait Billable
                 $invoices[] = new Invoice($this, $invoice);
             }
         }
-        return new Collection($invoices);   
+        return new Collection($invoices);
     }
     
     /**
@@ -262,17 +264,17 @@ trait Billable
         $parameters['status'] = 'pending';
         return $this->invoices($parameters);
     }
-     /**
-     * Get an array of the entity's invoices.
-     *
-     * @param  array  $parameters
-     * @return \Illuminate\Support\Collection
-     */
+    /**
+    * Get an array of the entity's invoices.
+    *
+    * @param  array  $parameters
+    * @return \Illuminate\Support\Collection
+    */
     public function invoicesOnlyPaid(array $parameters = []): Collection
     {
         $parameters['paid'] = true;
         return $this->invoices($parameters);
-    }   
+    }
     /**
      * Get a collection of the entity's payment methods.
      *
@@ -285,8 +287,9 @@ trait Billable
         $paystackAuthorizations = $this->asPaystackCustomer()->authorizations;
         if (! is_null($paystackAuthorizations)) {
             foreach ($paystackAuthorizations as $card) {
-                if($card['channel'] == 'card')
+                if ($card['channel'] == 'card') {
                     $cards[] = new Card($this, $card);
+                }
             }
         }
         return new Collection($cards);
@@ -352,11 +355,11 @@ trait Billable
         if (! $response['status']) {
             throw new Exception('Unable to create Paystack customer: '.$response['message']);
         }
-        $this->paystack_id = $response['data']['id'];  
-        $this->paystack_code = $response['data']['customer_code'];              
+        $this->paystack_id = $response['data']['id'];
+        $this->paystack_code = $response['data']['customer_code'];
         $this->save();
 
-        return $response['data'];   
+        return $response['data'];
     }
 
     /**
@@ -389,5 +392,4 @@ trait Billable
     {
         return Cashier::usesCurrency();
     }
-
 }
