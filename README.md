@@ -11,7 +11,7 @@ Cashier Paystack provides an expressive, fluent interface to Paystack's subscrip
 ## Composer
 First, add the Cashier package for Paystack to your dependencies:
 
-`composer require wisdomanthoni/cashier-paystack`
+`composer require eni360/cashier-paystack`
 
 ## Configuration
 You can publish the configuration file using this command:
