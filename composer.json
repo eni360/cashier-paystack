@@ -1,16 +1,16 @@
 {
-    "name": "wisdomanthoni/cashier-paystack",
+    "name": "mark/cashier-paystack",
     "description": "A Laravel Cashier Wrapper that provides an expressive, fluent interface to Paystack's subscription invoicing services.",
     "keywords": ["laravel", "paystack", "billing", "cashier"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Wisdom Anthony",
-            "email": "wisdomanthoni@gmail.com"
+            "name": "Mark",
+            "email": "bug@gmail.com"
         }
     ],
     "require": {
-        "php": "^7.1.3",
+        "php": "^8.0",
         "dompdf/dompdf": "^0.8.0",
         "illuminate/database": "~5.7.0|~5.8.0",
         "illuminate/support": "~5.7.0|~5.8.0",
@@ -19,8 +19,8 @@
         "unicodeveloper/laravel-paystack": "^1.0"
     },
     "require-dev": {
-        "illuminate/http": "~5.7.0|~5.8.0",
-        "illuminate/routing": "~5.7.0|~5.8.0",
+        "illuminate/http": "~6.5.5|~7.0.1",
+        "illuminate/routing": "~8.0",
         "illuminate/view": "~5.7.0|~5.8.0",
         "mockery/mockery": "~1.0",
         "orchestra/testbench": "~3.0",
